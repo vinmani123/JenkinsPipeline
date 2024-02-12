@@ -1,7 +1,7 @@
 node{
 
-   def tomcatWeb = 'c:\\apache-tomcat-10.1.5\\webapps'
-   def tomcatBin = 'c:\\apache-tomcat-10.1.5\\bin'
+   def tomcatWeb = '/home/osboxes/Downloads/apache-tomcat-9.0.80'
+   def tomcatBin = '/home/osboxes/Downloads/apache-tomcat-9.0.80/bin'
    def tomcatStatus = ''
    stage('SCM Checkout'){
      git 'https://github.com/vinmani123/JenkinsPipeline.git'
@@ -24,7 +24,7 @@ node{
 '''
    }*/
    stage('Deploy to Tomcat'){
-     bat "copy target\\JenkinsPipeline.war \"${tomcatWeb}\\JenkinsPipeline.war\""
+     sh "copy target\\JenkinsPipeline.war \"${tomcatWeb}\\JenkinsPipeline.war\""
    }
       stage ('Start Tomcat Server') {
          sleep(time:5,unit:"SECONDS") 
